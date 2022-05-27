@@ -1,0 +1,87 @@
+/* @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Cousine:wght@700&display=swap');
+
+
+ body{
+  margin: 0;
+  background-color: '#EEEDEE';
+}
+
+.fontawesome{
+  font-size: 20px;
+  margin-right:10px;
+}
+
+.Container{
+  display: flex;
+  flex-direction: row;
+}
+
+.Header{
+  margin-left: 50px;
+  font-family: 'Cousine', monospace;
+  font-size:35px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+
+/* .wrapper {
+  transform: translate(-40px, 0px);
+} */
+
+.LeftImage{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.bg{
+  position: relative;
+  top: 0;
+  left: 0;
+  /* z-index: 1; */
+}
+
+.ear{
+  position: relative;
+  top: 25px;
+  left: 25px;
+  z-index: 3;
+}
+
+.eye{
+  position: absolute;
+}
+
+.hair{
+  position: absolute;
+}
+
+.leg{
+  position: absolute;
+}
+
+.mouth{
+  position: absolute;
+}
+
+.neck{
+  position: absolute;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Style the active class, and buttons on mouse-over */
+.active, .btn:hover {
+  background-color: #666;
+  color: white;
+}

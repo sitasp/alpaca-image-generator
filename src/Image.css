@@ -1,0 +1,66 @@
+
+
+img{
+    width: 35em;
+}
+
+.wrapper{
+    margin-left: 50px;
+}
+
+.acc{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.ear{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1;
+}
+
+.eye{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+}
+
+.hair{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.leg{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 3;
+}
+
+.neck{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 3;
+}
+
+
+.nose{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 6;
+}
+
+.mouth{
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 7;
+}
