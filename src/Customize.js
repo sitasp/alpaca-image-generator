@@ -3,6 +3,9 @@ import DataContext from './context/DataContext';
 import styled from 'styled-components';
 
 import { FaDownload, FaRandom } from "react-icons/fa";
+import * as htmlToImage from 'html-to-image';
+
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 const Button = styled.button`
 /* Same as above */
@@ -51,6 +54,9 @@ ${({ active }) =>
 const ButtonGroup = styled.div`
 display: flex;
 flex-wrap: wrap;
+-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+box-sizing: border-box;         /* Opera/IE 8+ */
 `;
 
 const Customize = () => {
@@ -79,9 +85,7 @@ const Customize = () => {
         // console.log(activeChildren);
     }
 
-    const actDoubleCrazy = (x) => {
-        setActiveChild(x);
-        console.log(x)
+    const modifyImage = (activeLabel, activeName, x) => {
         if (activeLabel === 'Ears') {
             data.setEar(data.getImage(activeName, x.name))
         } else if (activeLabel === 'Eyes') {
@@ -99,6 +103,55 @@ const Customize = () => {
         } else if (activeLabel === 'Neck') {
             data.setNeck(data.getImage(activeName, x.name))
         }
+    }
+
+    const actDoubleCrazy = (x) => {
+        setActiveChild(x);
+        modifyImage(activeLabel, activeName, x);
+    }
+
+    const onCapture = (id) => {
+        toPng(document.getElementById(id))
+            .then(function (dataUrl) {
+                // download(dataUrl, 'my-node.png');
+                const link = document.createElement('a')
+                link.download = 'my-image-name.png'
+                link.href = dataUrl
+                link.click()
+            });
+    }
+
+    const indexChosenRandomly = (arr) => {
+        return Math.floor(Math.random() * arr.length);
+    }
+
+    const changeLabelsNamesRandomly = () => {
+        const pp = indexChosenRandomly(availEntity);
+        // setActiveLabel();
+        // setActiveName();
+        // setActiveChildren();
+        actCrazy(availEntity[pp]);
+        setActiveChild("");
+        console.log("Inside changelabelsnamesrandomly - ", availEntity[pp]);
+    }
+
+    const randomizeEach = (x) => {
+        console.log(x);
+        const pp = indexChosenRandomly(x[1]);
+        // console.log("To be name", x[2]);
+        // console.log("To be label", x[0]);
+        // console.log("To be setting", x[1][pp]);
+        modifyImage(x[0], x[2], x[1][pp]);
+
+    }
+
+    const randomizeDriver = () => {
+        for (let i = 0; i < availEntity.length; i++) {
+            randomizeEach(availEntity[i]);
+        }
+        changeLabelsNamesRandomly();
+        // const labelToChoose = availEntity[indexChosenRandomly(availEntity)];
+        // actCrazy(availEntity[labelToChoose]);
     }
 
     return (
@@ -133,13 +186,13 @@ const Customize = () => {
 
                 <ButtonGroup>
                     <FinalButton
-                        onClick={() => console.log("Download Button Clicked")}
+                        onClick={() => onCapture("image_wrapper_id")}
                     >
                         <FaDownload className='fontawesome' />
                         Download
                     </FinalButton>
                     <FinalButton
-                        onClick={() => console.log("Download Button Clicked")}
+                        onClick={() => randomizeDriver()}
                     >
                         <FaRandom className='fontawesome' />
                         Random

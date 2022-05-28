@@ -6,10 +6,10 @@ const Image = () => {
 
 
     const data = useContext(DataContext);
-    console.log(data);
+    //console.log(data);
 
     return (
-        <div className="wrapper">
+        <div className="wrapper" id="image_wrapper_id">
             <img className="bg" src={data.bg} alt="" />
             <img className="acc" src={data.acc} alt="" />
             <img className="ear" src={data.ear} alt="" />
